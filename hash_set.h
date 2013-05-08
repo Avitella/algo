@@ -4,30 +4,30 @@
 #include <vector>
 #include <algorithm>
 
-template<const int LIM = (int) 1e+6 + 7> 
+template<typename T, const int LIM = (int) 1e+6 + 7> 
 class hash_set {
  private:
-  std::vector<long long> hash[LIM];
-  std::vector<long long>::iterator first, last;
+  typename std::vector<T> hash[LIM];
+  typename std::vector<T>::iterator first, last;
   
  public:
   hash_set() {}
   
-  inline int pos(long long h) {
+  inline int pos(T h) {
     return (h % LIM + LIM) % LIM;
   }
   
-  void insert(long long h) {
+  void insert(T h) {
     hash[pos(h)].push_back(h);
   }
   
-  bool find(long long h) {
+  bool find(T h) {
     first = hash[pos(h)].begin();
     last = hash[pos(h)].end();
     return std::find(first, last, h) != last;
   }
   
-  void erase(long long h) {
+  void erase(T h) {
     hash[pos(h)].erase(h);
   }
   
