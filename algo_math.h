@@ -1,5 +1,5 @@
-#ifndef _MATH_H
-#define _MATH_H
+#ifndef _ALGO_MATH_H
+#define _ALGO_MATH_H
 
 #include <climits>
 #include <vector>
