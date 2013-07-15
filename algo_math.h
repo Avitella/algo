@@ -4,10 +4,16 @@
 #include <climits>
 #include <vector>
 
-long long bin_pow(long long x, int n, long long mod = LLONG_MAX) {
+long long pow_mod(long long x, int n, long long mod) {
   if (!n) return 1;
   else if (n & 1) return x * bin_pow(x, n - 1, mod) % mod;
   else return bin_pow(x * x % mod, n >> 1, mod);
+}
+
+long long bin_pow(long long x, int n) {
+  if (!n) return 1;
+  else if (n & 1) return x * bin_pow(x, n - 1);
+  else return bin_pow(x * x, n >> 1);
 }
 
 template<typename T> T gcd(T a, T b) {
