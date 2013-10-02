@@ -10,15 +10,15 @@ class string_tokenizer {
  public:
   string_tokenizer(const std::string& s, const std::string& separator) {
     std::string t = separator + '\0' + s;
-    std::vector<size_t> prefix = prefix_function(t);
+    std::vector<int> prefix = prefix_function(t);
     std::vector<bool> sep_begin(t.length(), false);
-    for (size_t i = separator.length() + 1; i < prefix.size(); ++i) {
+    for (int i = separator.length() + 1; i < prefix.size(); ++i) {
       if (prefix[i] == separator.length()) {
         sep_begin[i - separator.length() + 1] = true;
       }
     }
     std::string add;
-    size_t i = separator.length() + 1;
+    int i = separator.length() + 1;
     while (i < prefix.size()) {
       if (sep_begin[i]) {
         if (!add.empty()) {
@@ -61,7 +61,7 @@ class string_tokenizer {
     return tokens.empty();
   }
   
-  size_t size() {
+  int size() {
     return tokens.size();
   }
   

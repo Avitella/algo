@@ -8,7 +8,6 @@ template<const int LIM = (int) 1e+6 + 7>
 class hash_set {
  private:
   std::vector<long long> hash[LIM];
-  std::vector<long long>::iterator first, last;
   
  public:
   hash_set() {}
@@ -22,8 +21,8 @@ class hash_set {
   }
   
   bool find(long long h) {
-    first = hash[pos(h)].begin();
-    last = hash[pos(h)].end();
+    auto first = hash[pos(h)].begin();
+    auto last = hash[pos(h)].end();
     return std::find(first, last, h) != last;
   }
   
